@@ -35,6 +35,10 @@ Partial Class EtchOSketchForm
         Me.DrawWaveformsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ColorDialog = New System.Windows.Forms.ColorDialog()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ClearButton = New System.Windows.Forms.Button()
+        Me.ExitButton = New System.Windows.Forms.Button()
+        Me.DrawWaveformsButton = New System.Windows.Forms.Button()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EtchyContextMenuStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -81,38 +85,74 @@ Partial Class EtchOSketchForm
         '
         Me.SelectColorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CursorColorToolStripMenuItem, Me.DrawingPadColorToolStripMenuItem, Me.BackgroundColorToolStripMenuItem})
         Me.SelectColorToolStripMenuItem.Name = "SelectColorToolStripMenuItem"
-        Me.SelectColorToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.SelectColorToolStripMenuItem.Size = New System.Drawing.Size(327, 44)
         Me.SelectColorToolStripMenuItem.Text = "Select Color"
         '
         'CursorColorToolStripMenuItem
         '
         Me.CursorColorToolStripMenuItem.Name = "CursorColorToolStripMenuItem"
-        Me.CursorColorToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.CursorColorToolStripMenuItem.Size = New System.Drawing.Size(344, 44)
         Me.CursorColorToolStripMenuItem.Text = "Cursor Color"
         '
         'DrawingPadColorToolStripMenuItem
         '
         Me.DrawingPadColorToolStripMenuItem.Name = "DrawingPadColorToolStripMenuItem"
-        Me.DrawingPadColorToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.DrawingPadColorToolStripMenuItem.Size = New System.Drawing.Size(344, 44)
         Me.DrawingPadColorToolStripMenuItem.Text = "Drawing Pad Color"
         '
         'BackgroundColorToolStripMenuItem
         '
         Me.BackgroundColorToolStripMenuItem.Name = "BackgroundColorToolStripMenuItem"
-        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(344, 44)
         Me.BackgroundColorToolStripMenuItem.Text = "Background Color"
         '
         'DrawWaveformsToolStripMenuItem
         '
         Me.DrawWaveformsToolStripMenuItem.Name = "DrawWaveformsToolStripMenuItem"
-        Me.DrawWaveformsToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.DrawWaveformsToolStripMenuItem.Size = New System.Drawing.Size(327, 44)
         Me.DrawWaveformsToolStripMenuItem.Text = "Draw Waveforms"
         '
         'ClearToolStripMenuItem
         '
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(327, 44)
         Me.ClearToolStripMenuItem.Text = "Clear"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(442, 594)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(104, 75)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'ClearButton
+        '
+        Me.ClearButton.Location = New System.Drawing.Point(552, 594)
+        Me.ClearButton.Name = "ClearButton"
+        Me.ClearButton.Size = New System.Drawing.Size(104, 75)
+        Me.ClearButton.TabIndex = 2
+        Me.ClearButton.Text = "Clear"
+        Me.ClearButton.UseVisualStyleBackColor = True
+        '
+        'ExitButton
+        '
+        Me.ExitButton.Location = New System.Drawing.Point(662, 594)
+        Me.ExitButton.Name = "ExitButton"
+        Me.ExitButton.Size = New System.Drawing.Size(104, 75)
+        Me.ExitButton.TabIndex = 3
+        Me.ExitButton.Text = "Exit"
+        Me.ExitButton.UseVisualStyleBackColor = True
+        '
+        'DrawWaveformsButton
+        '
+        Me.DrawWaveformsButton.Location = New System.Drawing.Point(772, 594)
+        Me.DrawWaveformsButton.Name = "DrawWaveformsButton"
+        Me.DrawWaveformsButton.Size = New System.Drawing.Size(167, 75)
+        Me.DrawWaveformsButton.TabIndex = 4
+        Me.DrawWaveformsButton.Text = "Draw Waveforms"
+        Me.DrawWaveformsButton.UseVisualStyleBackColor = True
         '
         'EtchOSketchForm
         '
@@ -120,8 +160,12 @@ Partial Class EtchOSketchForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Firebrick
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1058, 653)
+        Me.ClientSize = New System.Drawing.Size(1147, 757)
         Me.ContextMenuStrip = Me.EtchyContextMenuStrip
+        Me.Controls.Add(Me.DrawWaveformsButton)
+        Me.Controls.Add(Me.ExitButton)
+        Me.Controls.Add(Me.ClearButton)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.Name = "EtchOSketchForm"
         Me.Text = "Etch O Sketch"
@@ -143,4 +187,8 @@ Partial Class EtchOSketchForm
     Friend WithEvents DrawingPadColorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BackgroundColorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ColorDialog As ColorDialog
+    Friend WithEvents Button1 As Button
+    Friend WithEvents ClearButton As Button
+    Friend WithEvents ExitButton As Button
+    Friend WithEvents DrawWaveformsButton As Button
 End Class

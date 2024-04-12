@@ -1,12 +1,12 @@
-﻿'Owen Fujii
+﻿Option Explicit On
+Option Strict On
+'Owen Fujii
 'RCET 2265
 'Spring 2024
 'Etch-O-Sketch
 '
 
-Option Explicit On
-Option Strict On
-
+Imports System.Threading
 
 Public Class EtchOSketchForm
 
@@ -102,5 +102,49 @@ Public Class EtchOSketchForm
             BackgroundColorChange(ColorDialog.Color, True)
         End If
         BackColor = BackgroundColorChange(, False)
+    End Sub
+
+    'TODO
+    '[] Shake Screen
+
+    Sub ShakeTheScreen()
+        'Shakes the screen randomly and returns to its original point
+        Dim originalScreenX As Integer
+        Dim originalScreenY As Integer
+        Dim modifiedX As Integer
+        Dim modifiedY As Integer
+        Dim screenPoint As Point
+        screenPoint = Me.Location
+        originalScreenX = screenPoint.X
+        originalScreenY = screenPoint.Y
+
+        modifiedX = screenPoint.X
+        modifiedY = screenPoint.Y
+        For i = 0 To 10
+            modifiedX = originalScreenX - RandomScreenCoord()
+            modifiedY = originalScreenY - RandomScreenCoord()
+            Me.Location = New Point(modifiedX, modifiedY)
+            Thread.Sleep(30)
+            modifiedX = originalScreenX + RandomScreenCoord()
+            modifiedY = originalScreenY + RandomScreenCoord()
+            Me.Location = New Point(modifiedX, modifiedY)
+            Thread.Sleep(30)
+        Next
+        Me.Location = New Point(originalScreenX, originalScreenY)
+    End Sub
+
+    Function RandomScreenCoord() As Integer
+        Dim temp As Integer
+        Randomize()
+        temp = CInt(Rnd() * 100)
+        Return temp
+    End Function
+
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
+        Me.Close()
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        ShakeTheScreen()
     End Sub
 End Class
