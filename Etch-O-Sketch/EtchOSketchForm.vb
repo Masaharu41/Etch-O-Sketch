@@ -16,6 +16,10 @@ Public Class EtchOSketchForm
         DrawingPictureBox.BackColor = PictureForegroundColor(Color.LemonChiffon, True)
     End Sub
 
+    Sub ClearForm()
+        DrawingPictureBox.Image = Nothing
+    End Sub
+
     Sub mousedraw(x As Integer, y As Integer, updateCord As Boolean)
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(ForegroundColor(, False), 5)
@@ -84,7 +88,7 @@ Public Class EtchOSketchForm
         End If
     End Sub
 
-    Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CursorColorToolStripMenuItem.Click
+    Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CursorColorToolStripMenuItem.Click, SelectColorButton.Click
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             ForegroundColor(ColorDialog.Color, True)
         End If
@@ -105,7 +109,7 @@ Public Class EtchOSketchForm
     End Sub
 
     'TODO
-    '[] Shake Screen
+    '[*] Shake Screen
 
     Sub ShakeTheScreen()
         'Shakes the screen randomly and returns to its original point
@@ -145,6 +149,8 @@ Public Class EtchOSketchForm
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        ClearForm()
+        Thread.Sleep(20)
         ShakeTheScreen()
     End Sub
 End Class
