@@ -160,7 +160,7 @@ Public Class EtchOSketchForm
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
 
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
-        Dim pen As New Pen(ForegroundColor(, False), 5)
+        Dim pen As New Pen(Color.Black, 5)
         Static x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
@@ -182,7 +182,7 @@ Public Class EtchOSketchForm
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
 
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
-        Dim pen As New Pen(ForegroundColor(, False), 5)
+        Dim pen As New Pen(Color.Blue, 5)
         Static x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
@@ -224,8 +224,8 @@ Public Class EtchOSketchForm
         g.Dispose()
     End Sub
     Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click
-        ' DrawSinWave()
-        ' DrawCosWave()
-        DrawTanWave()
+        DrawSinWave()
+        DrawCosWave()
+        ' DrawTanWave()
     End Sub
 End Class
