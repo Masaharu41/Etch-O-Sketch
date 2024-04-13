@@ -1,10 +1,12 @@
-﻿Option Explicit On
-Option Strict On
-'Owen Fujii
+﻿'Owen Fujii
 'RCET 2265
 'Spring 2024
 'Etch-O-Sketch
-'
+'https://github.com/Masaharu41/Etch-O-Sketch.git
+
+Option Explicit On
+Option Strict On
+
 
 Imports System.Threading
 
@@ -152,5 +154,29 @@ Public Class EtchOSketchForm
         ClearForm()
         Thread.Sleep(20)
         ShakeTheScreen()
+    End Sub
+
+    Sub DrawSinWave()
+        'Draws a one cycle sine wave that is matched to the dimensions of the screen
+
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(ForegroundColor(, False), 5)
+        Static x As Double, y As Double
+        Dim pi As Double = Math.PI
+        Dim screenEnd As Integer
+        screenEnd = DrawingPictureBox.Width
+        For i = 1 To screenEnd * 4
+            y = Math.Sin(i / screenEnd * 2 * pi) * 100 + 100
+            x = i
+            g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
+            ' oldY = y
+        Next
+
+        pen.Dispose()
+        g.Dispose()
+    End Sub
+
+    Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click
+        DrawSinWave()
     End Sub
 End Class
