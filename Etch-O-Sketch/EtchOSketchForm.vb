@@ -164,9 +164,11 @@ Public Class EtchOSketchForm
         Static x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
+        Dim screenTop As Integer
         screenEnd = DrawingPictureBox.Width
+        screenTop = DrawingPictureBox.Height
         For i = 1 To screenEnd * 4
-            y = Math.Sin(i / screenEnd * 2 * pi) * 100 + 100
+            y = Math.Sin(i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 6)
             x = i
             g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
             ' oldY = y
@@ -176,7 +178,54 @@ Public Class EtchOSketchForm
         g.Dispose()
     End Sub
 
+    Sub DrawCosWave()
+        'Draws a one cycle sine wave that is matched to the dimensions of the screen
+
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(ForegroundColor(, False), 5)
+        Static x As Double, y As Double
+        Dim pi As Double = Math.PI
+        Dim screenEnd As Integer
+        Dim screenTop As Integer
+        screenEnd = DrawingPictureBox.Width
+        screenTop = DrawingPictureBox.Height
+
+        For i = 1 To screenEnd * 4
+            y = Math.Cos(i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 2)
+            x = i
+            g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
+            ' oldY = y
+        Next
+
+        pen.Dispose()
+        g.Dispose()
+    End Sub
+
+    Sub DrawTanWave()
+        'Draws a one cycle sine wave that is matched to the dimensions of the screen
+
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(ForegroundColor(, False), 5)
+        Static x As Double, y As Double
+        Dim pi As Double = Math.PI
+        Dim screenEnd As Integer
+        Dim screenTop As Integer
+        screenEnd = DrawingPictureBox.Width
+        screenTop = DrawingPictureBox.Height
+
+        For i = 1 To screenEnd * 4
+            y = Math.Tan(i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 2) '+ (screenTop / 6)
+            x = i
+            g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
+            ' oldY = y
+        Next
+
+        pen.Dispose()
+        g.Dispose()
+    End Sub
     Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click
-        DrawSinWave()
+        ' DrawSinWave()
+        ' DrawCosWave()
+        DrawTanWave()
     End Sub
 End Class
