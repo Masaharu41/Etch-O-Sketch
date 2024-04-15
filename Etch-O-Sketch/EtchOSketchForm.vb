@@ -180,7 +180,7 @@ Public Class EtchOSketchForm
 
     Sub DrawCosWave()
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
-
+        'Produces a high resolution waveform at the expense of processing time
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Blue, 5)
         Static x As Double, y As Double
