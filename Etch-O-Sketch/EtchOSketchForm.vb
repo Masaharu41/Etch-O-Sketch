@@ -91,6 +91,7 @@ Public Class EtchOSketchForm
     End Sub
 
     Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CursorColorToolStripMenuItem.Click, SelectColorButton.Click
+
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             ForegroundColor(ColorDialog.Color, True)
         End If
@@ -151,9 +152,8 @@ Public Class EtchOSketchForm
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
-        ClearForm()
-        Thread.Sleep(20)
         ShakeTheScreen()
+        ClearForm()
     End Sub
 
     Sub DrawSinWave()
@@ -237,5 +237,19 @@ Public Class EtchOSketchForm
         DrawSinWave()
         DrawCosWave()
         DrawTanWave()
+    End Sub
+
+    Private Sub DrawingPictureBox_MouseClick(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseClick
+        'Handles when the middle button of the mouse is clicked on the picture box.
+        'If the button is pressed then cursor color change will be available 
+        Select Case e.Button
+            Case MouseButtons.Left
+            Case MouseButtons.Middle
+                If ColorDialog.ShowDialog() = DialogResult.OK Then
+                    ForegroundColor(ColorDialog.Color, True)
+                End If
+            Case MouseButtons.Right
+            Case Else
+        End Select
     End Sub
 End Class
