@@ -205,29 +205,24 @@ Public Class EtchOSketchForm
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
 
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
-        Dim pen As New Pen(ForegroundColor(, False), 5)
+        Dim pen As New Pen(Color.Purple, 5)
         Static x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
         Dim screenTop As Integer
-        Static oldX As Double
-        Static oldY As Double
 
         screenEnd = DrawingPictureBox.Width
         screenTop = DrawingPictureBox.Height
 
         For i = 1 To screenEnd * 4
-            y = Math.Tan(i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 2) '+ (screenTop / 6)
+            y = Math.Tan(i / screenEnd * 2 * pi) * (screenTop / 16) + (screenTop / 2)
             x = i
             Try
                 g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
 
             Catch ex As Exception
-                g.DrawLine(pen, CType(oldX, Single), CType(oldY, Single), CType(oldX, Single) + 1, CType(oldY, Single))
-
             End Try
-            oldX = x
-            oldY = y
+
         Next
 
         pen.Dispose()
