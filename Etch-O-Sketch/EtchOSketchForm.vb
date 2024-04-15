@@ -210,14 +210,24 @@ Public Class EtchOSketchForm
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
         Dim screenTop As Integer
+        Static oldX As Double
+        Static oldY As Double
+
         screenEnd = DrawingPictureBox.Width
         screenTop = DrawingPictureBox.Height
 
         For i = 1 To screenEnd * 4
             y = Math.Tan(i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 2) '+ (screenTop / 6)
             x = i
-            g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
-            ' oldY = y
+            Try
+                g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
+
+            Catch ex As Exception
+                g.DrawLine(pen, CType(oldX, Single), CType(oldY, Single), CType(oldX, Single) + 1, CType(oldY, Single))
+
+            End Try
+            oldX = x
+            oldY = y
         Next
 
         pen.Dispose()
@@ -226,6 +236,6 @@ Public Class EtchOSketchForm
     Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click
         DrawSinWave()
         DrawCosWave()
-        ' DrawTanWave()
+        DrawTanWave()
     End Sub
 End Class
