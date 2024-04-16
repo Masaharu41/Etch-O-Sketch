@@ -69,13 +69,17 @@ Partial Class ColorForm
         '
         'ColorChangeGroupBox
         '
+        Me.ColorChangeGroupBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ColorChangeGroupBox.AutoSize = True
         Me.ColorChangeGroupBox.Controls.Add(Me.BackgroundColorButton)
         Me.ColorChangeGroupBox.Controls.Add(Me.ColorLabel)
         Me.ColorChangeGroupBox.Controls.Add(Me.CursorColorButton)
         Me.ColorChangeGroupBox.Controls.Add(Me.DrawingColorButton)
-        Me.ColorChangeGroupBox.Location = New System.Drawing.Point(31, 83)
+        Me.ColorChangeGroupBox.Location = New System.Drawing.Point(12, 12)
         Me.ColorChangeGroupBox.Name = "ColorChangeGroupBox"
-        Me.ColorChangeGroupBox.Size = New System.Drawing.Size(700, 171)
+        Me.ColorChangeGroupBox.Size = New System.Drawing.Size(742, 203)
         Me.ColorChangeGroupBox.TabIndex = 4
         Me.ColorChangeGroupBox.TabStop = False
         '
@@ -83,13 +87,14 @@ Partial Class ColorForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(763, 236)
         Me.Controls.Add(Me.ColorChangeGroupBox)
         Me.Name = "ColorForm"
         Me.Text = "Form1"
         Me.ColorChangeGroupBox.ResumeLayout(False)
         Me.ColorChangeGroupBox.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
