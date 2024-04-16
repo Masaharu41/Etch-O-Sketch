@@ -189,7 +189,7 @@ Public Class EtchOSketchForm
         screenEnd = DrawingPictureBox.Width
         screenTop = DrawingPictureBox.Height
         For i = 1 To screenEnd * 4
-            y = Math.Sin(-i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 6)
+            y = Math.Sin(-i / screenEnd * 2 * pi) * (screenTop / 6) + (screenTop / 3)
             x = i
             g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
             ' oldY = y
@@ -212,7 +212,7 @@ Public Class EtchOSketchForm
         screenTop = DrawingPictureBox.Height
 
         For i = 1 To screenEnd * 4
-            y = Math.Cos(-i / screenEnd * 2 * pi) * (screenTop / 8) + (screenTop / 2)
+            y = Math.Cos(-i / screenEnd * 2 * pi) * (screenTop / 6) + (screenTop * 2 / 3)
             x = i
             g.DrawLine(pen, CType(x, Single), CType(y, Single), CType(x, Single) + 1, CType(y, Single))
             ' oldY = y
