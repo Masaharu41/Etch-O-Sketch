@@ -90,7 +90,7 @@ Public Class EtchOSketchForm
         End If
     End Sub
 
-    Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CursorColorToolStripMenuItem.Click, SelectColorButton.Click
+    Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, SelectColorToolStripMenuItem.Click, ColorsToolStripMenuItem.Click
 
         ColorForm.LoadColors()
 
@@ -232,7 +232,7 @@ Public Class EtchOSketchForm
         pen.Dispose()
         g.Dispose()
     End Sub
-    Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click
+    Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click, DrawWaveformsToolStripMenuItem1.Click
         DrawSinWave()
         DrawCosWave()
         DrawTanWave()
