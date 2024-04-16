@@ -8,21 +8,25 @@ Option Explicit On
 Option Strict On
 
 
+Imports System.Runtime.CompilerServices
 Imports System.Threading
 
 Public Class EtchOSketchForm
 
     Private Sub LoadDefaults(sender As Object, e As EventArgs) Handles Me.Load
+        'Loads the default color scheme of the form on load
         ForegroundColor(Color.Black, True)
         BackColor = BackgroundColorChange(Color.Firebrick, True)
         DrawingPictureBox.BackColor = PictureForegroundColor(Color.LemonChiffon, True)
     End Sub
 
     Sub ClearForm()
+        'Clears the form's picture box
         DrawingPictureBox.Image = Nothing
     End Sub
 
     Sub mousedraw(x As Integer, y As Integer, updateCord As Boolean)
+        'This sub is what allows the user to draw on the picturebox.
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(ForegroundColor(, False), 5)
         Static oldX As Integer, oldY As Integer
@@ -39,6 +43,7 @@ Public Class EtchOSketchForm
     End Sub
 
     Function ForegroundColor(Optional newColor As Color = Nothing, Optional update As Boolean = False) As Color
+        'Changes and saves the color of the cursor based on user input.
         Static newColorVar As Color
 
         If update Then
@@ -50,6 +55,7 @@ Public Class EtchOSketchForm
 
     End Function
     Function BackgroundColorChange(Optional newColor As Color = Nothing, Optional update As Boolean = False) As Color
+        'Changes and saves the Color of the Form's background. Background color is unified for all forms
         Static newColorVar As Color
 
         If update Then
@@ -62,6 +68,7 @@ Public Class EtchOSketchForm
     End Function
 
     Function PictureForegroundColor(Optional newcolor As Color = Nothing, Optional update As Boolean = False) As Color
+        'Changes and saves the color for the Drawing Picture Box background
         Static newColorVar As Color
 
         If update Then
@@ -91,19 +98,25 @@ Public Class EtchOSketchForm
     End Sub
 
     Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, ChangeColorToolStripMenuItem.Click, SelectColorToolStripMenuItem1.Click
-
+        ' 
         ColorForm.LoadColors()
 
     End Sub
     Sub ChangeCursorColor()
+        'Changes the cursor color based on user input
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             ForegroundColor(ColorDialog.Color, True)
         End If
     End Sub
     Sub DrawingPadColorClick()
+        'Changes the background color of the Drawing Picture Box based on a user set color
+        'The sub is called from the color change form. For this particular sub the 
+        'screen is cleared as the color would just cover existing drawings
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             PictureForegroundColor(ColorDialog.Color, True)
         End If
+        ShakeTheScreen()
+        ClearForm()
         DrawingPictureBox.BackColor = PictureForegroundColor(, False)
     End Sub
 
@@ -112,6 +125,7 @@ Public Class EtchOSketchForm
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             BackgroundColorChange(ColorDialog.Color, True)
         End If
+
         BackColor = BackgroundColorChange(, False)
     End Sub
 
@@ -119,7 +133,7 @@ Public Class EtchOSketchForm
     '[*] Shake Screen
 
     Sub ShakeTheScreen()
-        'Shakes the screen randomly and returns to its original point
+        'Shakes the screen randomly and returns to its original point after it is down.
         Dim originalScreenX As Integer
         Dim originalScreenY As Integer
         Dim modifiedX As Integer
@@ -145,24 +159,27 @@ Public Class EtchOSketchForm
     End Sub
 
     Function RandomScreenCoord() As Integer
+        'creates a random number to be used as a screen coordinate
         Dim temp As Integer
         Randomize()
         temp = CInt(Rnd() * 100)
         Return temp
     End Function
 
-    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitToolStripMenuItem.Click, ExitToolStripMenuItem.Click
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitToolStripMenuItem1.Click, ExitToolStripMenuItem.Click
+        'Closes the form
         Me.Close()
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click, ClearToolStripMenuItem1.Click
+        'To mimic a real etch o sketch the screen shakes and then the content is cleared.
         ShakeTheScreen()
         ClearForm()
     End Sub
 
     Sub DrawSinWave()
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
-
+        'Produces a high resolution waveform at the expense of processing time
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Black, 5)
         Static x As Double, y As Double
@@ -232,7 +249,8 @@ Public Class EtchOSketchForm
         pen.Dispose()
         g.Dispose()
     End Sub
-    Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem1.Click
+    Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem.Click
+        'Calls all waveform subs
         DrawSinWave()
         DrawCosWave()
         DrawTanWave()
@@ -254,6 +272,7 @@ Public Class EtchOSketchForm
 
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        'Displays the about form and hides the main etch o sketch
         AboutForm.AboutShow()
     End Sub
 

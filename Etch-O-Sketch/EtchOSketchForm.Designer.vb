@@ -77,7 +77,7 @@ Partial Class EtchOSketchForm
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(300, 38)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(128, 38)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'ExitToolStripMenuItem
@@ -96,19 +96,17 @@ Partial Class EtchOSketchForm
         'SelectColorToolStripMenuItem1
         '
         Me.SelectColorToolStripMenuItem1.Name = "SelectColorToolStripMenuItem1"
-        Me.SelectColorToolStripMenuItem1.Size = New System.Drawing.Size(359, 44)
+        Me.SelectColorToolStripMenuItem1.Size = New System.Drawing.Size(327, 44)
         Me.SelectColorToolStripMenuItem1.Text = "Select Color"
         '
         'DrawWaveformsToolStripMenuItem
         '
-        Me.DrawWaveformsToolStripMenuItem.CheckOnClick = True
         Me.DrawWaveformsToolStripMenuItem.Name = "DrawWaveformsToolStripMenuItem"
         Me.DrawWaveformsToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.DrawWaveformsToolStripMenuItem.Text = "Draw Waveforms"
         '
         'ClearToolStripMenuItem
         '
-        Me.ClearToolStripMenuItem.CheckOnClick = True
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
         Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.ClearToolStripMenuItem.Text = "Clear"
@@ -180,12 +178,11 @@ Partial Class EtchOSketchForm
         '
         Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
-        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(71, 36)
+        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(71, 38)
         Me.FileToolStripMenuItem1.Text = "File"
         '
         'ExitToolStripMenuItem1
         '
-        Me.ExitToolStripMenuItem1.CheckOnClick = True
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
         Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(359, 44)
         Me.ExitToolStripMenuItem1.Text = "Exit"
@@ -194,26 +191,23 @@ Partial Class EtchOSketchForm
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeColorToolStripMenuItem, Me.DrawWaveformsToolStripMenuItem1, Me.ClearToolStripMenuItem1})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(74, 36)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(74, 38)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'ChangeColorToolStripMenuItem
         '
-        Me.ChangeColorToolStripMenuItem.CheckOnClick = True
         Me.ChangeColorToolStripMenuItem.Name = "ChangeColorToolStripMenuItem"
         Me.ChangeColorToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.ChangeColorToolStripMenuItem.Text = "Change Color"
         '
         'DrawWaveformsToolStripMenuItem1
         '
-        Me.DrawWaveformsToolStripMenuItem1.CheckOnClick = True
         Me.DrawWaveformsToolStripMenuItem1.Name = "DrawWaveformsToolStripMenuItem1"
         Me.DrawWaveformsToolStripMenuItem1.Size = New System.Drawing.Size(359, 44)
         Me.DrawWaveformsToolStripMenuItem1.Text = "Draw Waveforms"
         '
         'ClearToolStripMenuItem1
         '
-        Me.ClearToolStripMenuItem1.CheckOnClick = True
         Me.ClearToolStripMenuItem1.Name = "ClearToolStripMenuItem1"
         Me.ClearToolStripMenuItem1.Size = New System.Drawing.Size(359, 44)
         Me.ClearToolStripMenuItem1.Text = "Clear"
@@ -222,13 +216,13 @@ Partial Class EtchOSketchForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(84, 36)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(84, 38)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(212, 44)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'EtchOSketchForm
