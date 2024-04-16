@@ -73,6 +73,7 @@ Partial Class ColorForm
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ColorChangeGroupBox.AutoSize = True
+        Me.ColorChangeGroupBox.BackColor = System.Drawing.Color.DarkGray
         Me.ColorChangeGroupBox.Controls.Add(Me.BackgroundColorButton)
         Me.ColorChangeGroupBox.Controls.Add(Me.ColorLabel)
         Me.ColorChangeGroupBox.Controls.Add(Me.CursorColorButton)

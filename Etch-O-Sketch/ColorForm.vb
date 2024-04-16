@@ -6,10 +6,6 @@ Public Class ColorForm
         Me.Show()
         Dim buttonColors As Color = EtchOSketchForm.PictureForegroundColor(, False)
         BackColor = EtchOSketchForm.BackgroundColorChange(, False)
-        ColorLabel.BackColor = buttonColors
-        CursorColorButton.BackColor = buttonColors
-        BackgroundColorButton.BackColor = buttonColors
-        DrawingColorButton.BackColor = buttonColors
 
     End Sub
 
