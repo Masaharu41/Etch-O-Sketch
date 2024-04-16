@@ -92,19 +92,23 @@ Public Class EtchOSketchForm
 
     Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CursorColorToolStripMenuItem.Click, SelectColorButton.Click
 
+        ColorForm.LoadColors()
+
+    End Sub
+    Sub ChangeCursorColor()
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             ForegroundColor(ColorDialog.Color, True)
         End If
     End Sub
-
-    Private Sub DrawingPadColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DrawingPadColorToolStripMenuItem.Click
+    Sub DrawingPadColorClick()
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             PictureForegroundColor(ColorDialog.Color, True)
         End If
         DrawingPictureBox.BackColor = PictureForegroundColor(, False)
     End Sub
 
-    Private Sub BackgroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click
+    Sub BackgroundColorClick()
+
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             BackgroundColorChange(ColorDialog.Color, True)
         End If
@@ -247,4 +251,7 @@ Public Class EtchOSketchForm
             Case Else
         End Select
     End Sub
+
+
+
 End Class
