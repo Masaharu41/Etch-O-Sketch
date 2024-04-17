@@ -8,6 +8,7 @@ Option Explicit On
 Option Strict On
 
 
+Imports System.Media
 Imports System.Runtime.CompilerServices
 Imports System.Threading
 
@@ -98,7 +99,7 @@ Public Class EtchOSketchForm
     End Sub
 
     Private Sub CursorColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectColorButton.Click, ChangeColorToolStripMenuItem.Click, SelectColorToolStripMenuItem1.Click
-        ' 
+        ' loads the color change form
         ColorForm.LoadColors()
 
     End Sub
@@ -145,7 +146,7 @@ Public Class EtchOSketchForm
 
         modifiedX = screenPoint.X
         modifiedY = screenPoint.Y
-        For i = 0 To 10
+        For i = 0 To 40
             modifiedX = originalScreenX - RandomScreenCoord()
             modifiedY = originalScreenY - RandomScreenCoord()
             Me.Location = New Point(modifiedX, modifiedY)
@@ -156,6 +157,7 @@ Public Class EtchOSketchForm
             Thread.Sleep(30)
         Next
         Me.Location = New Point(originalScreenX, originalScreenY)
+        My.Computer.Audio.Stop()
     End Sub
 
     Function RandomScreenCoord() As Integer
@@ -173,9 +175,31 @@ Public Class EtchOSketchForm
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click, ClearToolStripMenuItem1.Click
         'To mimic a real etch o sketch the screen shakes and then the content is cleared.
+        PlayAudio()
         ShakeTheScreen()
         ClearForm()
     End Sub
+
+    Function PlayAudio() As Boolean
+        Static clearedRuns As Integer
+        If clearedRuns = 2 Then
+            Try
+                My.Computer.Audio.Play("..\..\WhyNot.wav", AudioPlayMode.BackgroundLoop)
+            Catch ex As Exception
+                MsgBox("no audio found")
+            End Try
+            clearedRuns = clearedRuns + 1
+            Return True
+        Else
+            Try
+                My.Computer.Audio.Play("..\..\SHAKER.wav", AudioPlayMode.BackgroundLoop)
+            Catch ex As Exception
+                MsgBox("no audio found")
+            End Try
+        End If
+        clearedRuns = clearedRuns + 1
+        Return False
+    End Function
 
     Sub DrawSinWave()
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
