@@ -116,7 +116,7 @@ Public Class EtchOSketchForm
         If ColorDialog.ShowDialog() = DialogResult.OK Then
             PictureForegroundColor(ColorDialog.Color, True)
         End If
-        ShakeTheScreen()
+        ShakeTheScreen(PlayAudio)
         ClearForm()
         DrawingPictureBox.BackColor = PictureForegroundColor(, False)
     End Sub
@@ -133,7 +133,7 @@ Public Class EtchOSketchForm
     'TODO
     '[*] Shake Screen
 
-    Sub ShakeTheScreen()
+    Sub ShakeTheScreen(maddness As Boolean)
         'Shakes the screen randomly and returns to its original point after it is down.
         Dim originalScreenX As Integer
         Dim originalScreenY As Integer
@@ -146,18 +146,34 @@ Public Class EtchOSketchForm
 
         modifiedX = screenPoint.X
         modifiedY = screenPoint.Y
-        For i = 0 To 40
-            modifiedX = originalScreenX - RandomScreenCoord()
-            modifiedY = originalScreenY - RandomScreenCoord()
-            Me.Location = New Point(modifiedX, modifiedY)
-            Thread.Sleep(30)
-            modifiedX = originalScreenX + RandomScreenCoord()
-            modifiedY = originalScreenY + RandomScreenCoord()
-            Me.Location = New Point(modifiedX, modifiedY)
-            Thread.Sleep(30)
-        Next
-        Me.Location = New Point(originalScreenX, originalScreenY)
-        My.Computer.Audio.Stop()
+        If maddness = False Then
+            For i = 0 To 20
+                modifiedX = originalScreenX - RandomScreenCoord()
+                modifiedY = originalScreenY - RandomScreenCoord()
+                Me.Location = New Point(modifiedX, modifiedY)
+                Thread.Sleep(30)
+                modifiedX = originalScreenX + RandomScreenCoord()
+                modifiedY = originalScreenY + RandomScreenCoord()
+                Me.Location = New Point(modifiedX, modifiedY)
+                Thread.Sleep(30)
+            Next
+            Me.Location = New Point(originalScreenX, originalScreenY)
+            My.Computer.Audio.Stop()
+        Else
+            For i = 0 To 40
+                modifiedX = modifiedX - RandomScreenCoord()
+                modifiedY = modifiedY - RandomScreenCoord()
+                Me.Location = New Point(modifiedX, modifiedY)
+                Thread.Sleep(30)
+                modifiedX = modifiedX + RandomScreenCoord()
+                modifiedY = modifiedY + RandomScreenCoord()
+                Me.Location = New Point(modifiedX, modifiedY)
+                Thread.Sleep(30)
+            Next
+            Me.Location = New Point(originalScreenX, originalScreenY)
+            My.Computer.Audio.Stop()
+        End If
+
     End Sub
 
     Function RandomScreenCoord() As Integer
@@ -175,8 +191,8 @@ Public Class EtchOSketchForm
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click, ClearToolStripMenuItem1.Click
         'To mimic a real etch o sketch the screen shakes and then the content is cleared.
-        PlayAudio()
-        ShakeTheScreen()
+        ' PlayAudio()
+        ShakeTheScreen(PlayAudio)
         ClearForm()
     End Sub
 
