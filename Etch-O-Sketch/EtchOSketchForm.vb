@@ -15,7 +15,13 @@ Imports System.Threading
 Public Class EtchOSketchForm
 
     Private Sub LoadDefaults(sender As Object, e As EventArgs) Handles Me.Load
-        'Loads the default color scheme of the form on load
+        'loads the default colors of the form on load
+        DefaultColors()
+    End Sub
+
+    Sub DefaultColors()
+        'Loads the default color scheme of the form
+        DrawingPictureBox.Image = Nothing
         ForegroundColor(Color.Black, True)
         BackColor = BackgroundColorChange(Color.Firebrick, True)
         DrawingPictureBox.BackColor = PictureForegroundColor(Color.LemonChiffon, True)
@@ -82,7 +88,7 @@ Public Class EtchOSketchForm
 
 
     Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove
-        'Remove Text for Full submission
+        'Gives a display of the cursors position on the drawing pad to the user when the mouse is moved.
         Me.Text = $"({e.X},{e.Y} Button: {e.Button})"
         'mousedraw(e.X, e.Y)
         If e.Button = MouseButtons.Left Then
@@ -91,7 +97,7 @@ Public Class EtchOSketchForm
     End Sub
 
     Private Sub DrawingPictureBox_MouseDown(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseDown
-        'Remove Text for Full submission
+        'Gives a display of the cursors location when any of the mouse's buttons are pressed.
         Me.Text = $"({e.X},{e.Y} Button: {e.Button})"
         If e.Button = MouseButtons.Left Then
             mousedraw(e.X, e.Y, True)
@@ -134,7 +140,8 @@ Public Class EtchOSketchForm
     '[*] Shake Screen
 
     Sub ShakeTheScreen(maddness As Boolean)
-        'Shakes the screen randomly and returns to its original point after it is down.
+        'Shakes the screen randomly and returns to its original point after it is done
+        'Also stops the music from the music loop once the operation is complete
         Dim originalScreenX As Integer
         Dim originalScreenY As Integer
         Dim modifiedX As Integer
@@ -147,7 +154,7 @@ Public Class EtchOSketchForm
         modifiedX = screenPoint.X
         modifiedY = screenPoint.Y
         If maddness = False Then
-            For i = 0 To 20
+            For i = 0 To 15
                 modifiedX = originalScreenX - RandomScreenCoord()
                 modifiedY = originalScreenY - RandomScreenCoord()
                 Me.Location = New Point(modifiedX, modifiedY)
@@ -160,7 +167,7 @@ Public Class EtchOSketchForm
             Me.Location = New Point(originalScreenX, originalScreenY)
             My.Computer.Audio.Stop()
         Else
-            For i = 0 To 40
+            For i = 0 To 39
                 modifiedX = modifiedX - RandomScreenCoord()
                 modifiedY = modifiedY - RandomScreenCoord()
                 Me.Location = New Point(modifiedX, modifiedY)

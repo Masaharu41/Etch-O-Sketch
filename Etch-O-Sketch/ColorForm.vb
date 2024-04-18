@@ -27,4 +27,10 @@ Public Class ColorForm
         Me.Hide()
         EtchOSketchForm.DrawingPadColorClick()
     End Sub
+
+    Sub DefaultButton_Click(sender As Object, e As EventArgs) Handles DefaultButton.Click
+        'Loads the default color scheme that the form had upon load.
+        Me.Hide()
+        EtchOSketchForm.DefaultColors()
+    End Sub
 End Class

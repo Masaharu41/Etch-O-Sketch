@@ -22,11 +22,14 @@ Partial Class ColorForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.CursorColorButton = New System.Windows.Forms.Button()
         Me.DrawingColorButton = New System.Windows.Forms.Button()
         Me.BackgroundColorButton = New System.Windows.Forms.Button()
         Me.ColorLabel = New System.Windows.Forms.Label()
         Me.ColorChangeGroupBox = New System.Windows.Forms.GroupBox()
+        Me.DefaultButton = New System.Windows.Forms.Button()
+        Me.ColorsToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ColorChangeGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -37,6 +40,7 @@ Partial Class ColorForm
         Me.CursorColorButton.Size = New System.Drawing.Size(219, 61)
         Me.CursorColorButton.TabIndex = 0
         Me.CursorColorButton.Text = "Cursor"
+        Me.ColorsToolTip.SetToolTip(Me.CursorColorButton, "Change the Cursor Color")
         Me.CursorColorButton.UseVisualStyleBackColor = True
         '
         'DrawingColorButton
@@ -46,6 +50,7 @@ Partial Class ColorForm
         Me.DrawingColorButton.Size = New System.Drawing.Size(193, 61)
         Me.DrawingColorButton.TabIndex = 1
         Me.DrawingColorButton.Text = "Drawing Pad"
+        Me.ColorsToolTip.SetToolTip(Me.DrawingColorButton, "Changes the background of the drawing pad")
         Me.DrawingColorButton.UseVisualStyleBackColor = True
         '
         'BackgroundColorButton
@@ -55,6 +60,7 @@ Partial Class ColorForm
         Me.BackgroundColorButton.Size = New System.Drawing.Size(209, 61)
         Me.BackgroundColorButton.TabIndex = 2
         Me.BackgroundColorButton.Text = "Background"
+        Me.ColorsToolTip.SetToolTip(Me.BackgroundColorButton, "Changes the background color of the form")
         Me.BackgroundColorButton.UseVisualStyleBackColor = True
         '
         'ColorLabel
@@ -74,21 +80,32 @@ Partial Class ColorForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ColorChangeGroupBox.AutoSize = True
         Me.ColorChangeGroupBox.BackColor = System.Drawing.Color.DarkGray
+        Me.ColorChangeGroupBox.Controls.Add(Me.DefaultButton)
         Me.ColorChangeGroupBox.Controls.Add(Me.BackgroundColorButton)
         Me.ColorChangeGroupBox.Controls.Add(Me.ColorLabel)
         Me.ColorChangeGroupBox.Controls.Add(Me.CursorColorButton)
         Me.ColorChangeGroupBox.Controls.Add(Me.DrawingColorButton)
         Me.ColorChangeGroupBox.Location = New System.Drawing.Point(12, 12)
         Me.ColorChangeGroupBox.Name = "ColorChangeGroupBox"
-        Me.ColorChangeGroupBox.Size = New System.Drawing.Size(742, 203)
+        Me.ColorChangeGroupBox.Size = New System.Drawing.Size(742, 285)
         Me.ColorChangeGroupBox.TabIndex = 4
         Me.ColorChangeGroupBox.TabStop = False
+        '
+        'DefaultButton
+        '
+        Me.DefaultButton.Location = New System.Drawing.Point(286, 171)
+        Me.DefaultButton.Name = "DefaultButton"
+        Me.DefaultButton.Size = New System.Drawing.Size(193, 61)
+        Me.DefaultButton.TabIndex = 4
+        Me.DefaultButton.Text = "Default"
+        Me.ColorsToolTip.SetToolTip(Me.DefaultButton, "Restores all colors to default")
+        Me.DefaultButton.UseVisualStyleBackColor = True
         '
         'ColorForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(763, 236)
+        Me.ClientSize = New System.Drawing.Size(763, 318)
         Me.Controls.Add(Me.ColorChangeGroupBox)
         Me.Name = "ColorForm"
         Me.Text = "Form1"
@@ -104,4 +121,6 @@ Partial Class ColorForm
     Friend WithEvents BackgroundColorButton As Button
     Friend WithEvents ColorLabel As Label
     Friend WithEvents ColorChangeGroupBox As GroupBox
+    Friend WithEvents DefaultButton As Button
+    Friend WithEvents ColorsToolTip As ToolTip
 End Class
