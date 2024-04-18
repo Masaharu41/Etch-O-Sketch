@@ -52,7 +52,6 @@ Public Class EtchOSketchForm
     Function ForegroundColor(Optional newColor As Color = Nothing, Optional update As Boolean = False) As Color
         'Changes and saves the color of the cursor based on user input.
         Static newColorVar As Color
-
         If update Then
             newColorVar = newColor
 
@@ -77,7 +76,6 @@ Public Class EtchOSketchForm
     Function PictureForegroundColor(Optional newcolor As Color = Nothing, Optional update As Boolean = False) As Color
         'Changes and saves the color for the Drawing Picture Box background
         Static newColorVar As Color
-
         If update Then
             newColorVar = newcolor
 
@@ -229,7 +227,7 @@ Public Class EtchOSketchForm
         'Produces a high resolution waveform at the expense of processing time
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Black, 5)
-        Static x As Double, y As Double
+        Dim x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
         Dim screenTop As Integer
@@ -251,7 +249,7 @@ Public Class EtchOSketchForm
         'Produces a high resolution waveform at the expense of processing time
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Blue, 5)
-        Static x As Double, y As Double
+        Dim x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
         Dim screenTop As Integer
@@ -269,12 +267,28 @@ Public Class EtchOSketchForm
         g.Dispose()
     End Sub
 
+    Sub DrawGrid()
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Black, 5)
+        Dim x As Double, y As Double
+        Dim xIntcrement As Integer, yIntcrement As Integer
+        xIntcrement = CInt(DrawingPictureBox.Width / 10)
+        yIntcrement = CInt(DrawingPictureBox.Height / 10)
+        x = DrawingPictureBox.Width
+        y = DrawingPictureBox.Height
+
+        For i = 1 To 10
+            g.DrawLine(pen, xIntcrement, 0, xIntcrement, CType(y, Single))
+            xIntcrement = xIntcrement + CInt(DrawingPictureBox.Width / 10)
+        Next
+    End Sub
+
     Sub DrawTanWave()
         'Draws a one cycle sine wave that is matched to the dimensions of the screen
 
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Purple, 5)
-        Static x As Double, y As Double
+        Dim x As Double, y As Double
         Dim pi As Double = Math.PI
         Dim screenEnd As Integer
         Dim screenTop As Integer
@@ -298,6 +312,7 @@ Public Class EtchOSketchForm
     End Sub
     Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem.Click
         'Calls all waveform subs
+        DrawGrid()
         DrawSinWave()
         DrawCosWave()
         DrawTanWave()
@@ -309,9 +324,7 @@ Public Class EtchOSketchForm
         Select Case e.Button
             Case MouseButtons.Left
             Case MouseButtons.Middle
-                If ColorDialog.ShowDialog() = DialogResult.OK Then
-                    ForegroundColor(ColorDialog.Color, True)
-                End If
+                ColorForm.LoadColors()
             Case MouseButtons.Right
             Case Else
         End Select

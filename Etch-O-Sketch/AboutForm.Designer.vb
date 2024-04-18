@@ -22,9 +22,11 @@ Partial Class AboutForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutForm))
         Me.AboutLabel = New System.Windows.Forms.Label()
         Me.CloseButton = New System.Windows.Forms.Button()
+        Me.AboutToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'AboutLabel
@@ -32,6 +34,7 @@ Partial Class AboutForm
         Me.AboutLabel.AutoSize = True
         Me.AboutLabel.BackColor = System.Drawing.Color.DarkGray
         Me.AboutLabel.Font = New System.Drawing.Font("Liberation Sans", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AboutLabel.ForeColor = System.Drawing.Color.White
         Me.AboutLabel.Location = New System.Drawing.Point(58, 47)
         Me.AboutLabel.Name = "AboutLabel"
         Me.AboutLabel.Size = New System.Drawing.Size(669, 252)
@@ -45,6 +48,7 @@ Partial Class AboutForm
         Me.CloseButton.Size = New System.Drawing.Size(204, 62)
         Me.CloseButton.TabIndex = 1
         Me.CloseButton.Text = "Close"
+        Me.AboutToolTip.SetToolTip(Me.CloseButton, "Close About Form")
         Me.CloseButton.UseVisualStyleBackColor = True
         '
         'AboutForm
@@ -63,4 +67,5 @@ Partial Class AboutForm
 
     Friend WithEvents AboutLabel As Label
     Friend WithEvents CloseButton As Button
+    Friend WithEvents AboutToolTip As ToolTip
 End Class

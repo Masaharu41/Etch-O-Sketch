@@ -126,4 +126,7 @@ while also adding new features.
 *Pre programed drawings
 *Free Draw</value>
   </data>
+  <metadata name="AboutToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
