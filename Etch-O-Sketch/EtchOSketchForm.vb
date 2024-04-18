@@ -272,18 +272,18 @@ Public Class EtchOSketchForm
         Dim pen As New Pen(Color.Black, 2)
         Dim x As Double, y As Double
         Dim xIntcrement As Integer, yIntcrement As Integer
-        xIntcrement = CInt(DrawingPictureBox.Width / 11)
-        yIntcrement = CInt(DrawingPictureBox.Height / 11)
+        xIntcrement = CInt(DrawingPictureBox.Width / 10)
+        yIntcrement = CInt(DrawingPictureBox.Height / 10)
         x = DrawingPictureBox.Width
         y = DrawingPictureBox.Height
 
-        For i = 1 To 10
+        For i = 1 To 9
             g.DrawLine(pen, xIntcrement, 0, xIntcrement, CType(y, Single))
-            xIntcrement = xIntcrement + CInt(DrawingPictureBox.Width / 11)
+            xIntcrement = xIntcrement + CInt(DrawingPictureBox.Width / 10)
         Next
-        For i = 1 To 10
+        For i = 1 To 9
             g.DrawLine(pen, 0, yIntcrement, CType(x, Single), yIntcrement)
-            yIntcrement = yIntcrement + CInt(DrawingPictureBox.Height / 11)
+            yIntcrement = yIntcrement + CInt(DrawingPictureBox.Height / 10)
         Next
     End Sub
 

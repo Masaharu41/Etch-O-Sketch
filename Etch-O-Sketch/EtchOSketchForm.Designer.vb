@@ -117,7 +117,7 @@ Partial Class EtchOSketchForm
         Me.SelectColorButton.Location = New System.Drawing.Point(408, 30)
         Me.SelectColorButton.Name = "SelectColorButton"
         Me.SelectColorButton.Size = New System.Drawing.Size(167, 75)
-        Me.SelectColorButton.TabIndex = 1
+        Me.SelectColorButton.TabIndex = 4
         Me.SelectColorButton.Text = "Select Color"
         Me.EtchOSketchToolTip.SetToolTip(Me.SelectColorButton, "Opens Color Selection Dialog")
         Me.SelectColorButton.UseVisualStyleBackColor = True
@@ -127,7 +127,7 @@ Partial Class EtchOSketchForm
         Me.ClearButton.Location = New System.Drawing.Point(15, 30)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(104, 75)
-        Me.ClearButton.TabIndex = 2
+        Me.ClearButton.TabIndex = 1
         Me.ClearButton.Text = "Clear"
         Me.EtchOSketchToolTip.SetToolTip(Me.ClearButton, "Clears the contents of the drawing pad")
         Me.ClearButton.UseVisualStyleBackColor = True
@@ -137,7 +137,7 @@ Partial Class EtchOSketchForm
         Me.ExitButton.Location = New System.Drawing.Point(125, 30)
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(104, 75)
-        Me.ExitButton.TabIndex = 3
+        Me.ExitButton.TabIndex = 2
         Me.ExitButton.Text = "Exit"
         Me.EtchOSketchToolTip.SetToolTip(Me.ExitButton, "Exits the form")
         Me.ExitButton.UseVisualStyleBackColor = True
@@ -147,7 +147,7 @@ Partial Class EtchOSketchForm
         Me.DrawWaveformsButton.Location = New System.Drawing.Point(235, 30)
         Me.DrawWaveformsButton.Name = "DrawWaveformsButton"
         Me.DrawWaveformsButton.Size = New System.Drawing.Size(167, 75)
-        Me.DrawWaveformsButton.TabIndex = 4
+        Me.DrawWaveformsButton.TabIndex = 3
         Me.DrawWaveformsButton.Text = "Draw Waveforms"
         Me.EtchOSketchToolTip.SetToolTip(Me.DrawWaveformsButton, "Draws a one cycle Sine, Cos, and Tan waveform ")
         Me.DrawWaveformsButton.UseVisualStyleBackColor = True
@@ -164,7 +164,7 @@ Partial Class EtchOSketchForm
         Me.ControlsGroupBox.Location = New System.Drawing.Point(271, 482)
         Me.ControlsGroupBox.Name = "ControlsGroupBox"
         Me.ControlsGroupBox.Size = New System.Drawing.Size(599, 135)
-        Me.ControlsGroupBox.TabIndex = 5
+        Me.ControlsGroupBox.TabIndex = 1
         Me.ControlsGroupBox.TabStop = False
         Me.ControlsGroupBox.Text = "Controls"
         '
@@ -175,7 +175,7 @@ Partial Class EtchOSketchForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem1, Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(900, 42)
+        Me.MenuStrip1.Size = New System.Drawing.Size(900, 40)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
