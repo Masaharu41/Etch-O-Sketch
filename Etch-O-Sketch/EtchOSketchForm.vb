@@ -316,6 +316,7 @@ Public Class EtchOSketchForm
     End Sub
     Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem.Click
         'Calls all waveform subs
+        ShakeTheScreen(PlayAudio())
         DrawGrid()
         DrawSinWave()
         DrawCosWave()
