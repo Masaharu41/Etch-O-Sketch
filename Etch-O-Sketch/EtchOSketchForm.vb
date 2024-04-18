@@ -270,20 +270,20 @@ Public Class EtchOSketchForm
     Sub DrawGrid()
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Black, 2)
-        Dim x As Double, y As Double
-        Dim xIntcrement As Integer, yIntcrement As Integer
-        xIntcrement = CInt(DrawingPictureBox.Width / 10)
-        yIntcrement = CInt(DrawingPictureBox.Height / 10)
+        Dim x As Integer, y As Integer
+        Dim xIncrement As Integer, yIncrement As Integer
+        xIncrement = CInt(DrawingPictureBox.Width / 10)
+        yIncrement = CInt(DrawingPictureBox.Height / 10)
         x = DrawingPictureBox.Width
         y = DrawingPictureBox.Height
 
         For i = 1 To 9
-            g.DrawLine(pen, xIntcrement, 0, xIntcrement, CType(y, Single))
-            xIntcrement = xIntcrement + CInt(DrawingPictureBox.Width / 10)
+            g.DrawLine(pen, xIncrement, 0, xIncrement, y)
+            xIncrement = xIncrement + CInt(DrawingPictureBox.Width / 10)
         Next
         For i = 1 To 9
-            g.DrawLine(pen, 0, yIntcrement, CType(x, Single), yIntcrement)
-            yIntcrement = yIntcrement + CInt(DrawingPictureBox.Height / 10)
+            g.DrawLine(pen, 0, yIncrement, x, yIncrement)
+            yIncrement = yIncrement + CInt(DrawingPictureBox.Height / 10)
         Next
     End Sub
 
