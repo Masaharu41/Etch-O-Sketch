@@ -21,7 +21,7 @@ Public Class EtchOSketchForm
 
     Sub DefaultColors()
         'Loads the default color scheme of the form
-        DrawingPictureBox.Image = Nothing
+        DrawingPictureBox.Refresh()
         ForegroundColor(Color.Black, True)
         BackColor = BackgroundColorChange(Color.Firebrick, True)
         DrawingPictureBox.BackColor = PictureForegroundColor(Color.LemonChiffon, True)
@@ -29,7 +29,7 @@ Public Class EtchOSketchForm
 
     Sub ClearForm()
         'Clears the form's picture box
-        DrawingPictureBox.Image = Nothing
+        DrawingPictureBox.Refresh()
     End Sub
 
     Sub mousedraw(x As Integer, y As Integer, updateCord As Boolean)
@@ -317,6 +317,7 @@ Public Class EtchOSketchForm
     Private Sub DrawWaveformsButton_Click(sender As Object, e As EventArgs) Handles DrawWaveformsButton.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem1.Click, DrawWaveformsToolStripMenuItem.Click
         'Calls all waveform subs
         ShakeTheScreen(PlayAudio())
+        ClearForm()
         DrawGrid()
         DrawSinWave()
         DrawCosWave()
