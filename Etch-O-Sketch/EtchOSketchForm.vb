@@ -342,9 +342,11 @@ Public Class EtchOSketchForm
         AboutForm.AboutShow()
     End Sub
 
-    Function CovertToCords(axis As Boolean, currentHex%) As Integer
-        Dim xAspect% = CInt(DrawingPictureBox.Width / 1024)
-        Dim yAspect% = CInt(DrawingPictureBox.Height / 1024)
+
+
+    Public Function CovertToCords(axis As Boolean, currentHex%) As Integer
+        Dim xAspect As Double = DrawingPictureBox.Width / 1024
+        Dim yAspect As Double = DrawingPictureBox.Height / 1024
         Dim cordReturn%
 
         If axis = True Then
@@ -354,5 +356,13 @@ Public Class EtchOSketchForm
         End If
         Return cordReturn
     End Function
+
+    Private Sub XTrackBar_DragLeave(sender As Object, e As EventArgs) Handles XTrackBar.ValueChanged
+        mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
+    End Sub
+
+    Private Sub YTrackBar_DragLeave(sender As Object, e As EventArgs) Handles YTrackBar.ValueChanged
+        mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
+    End Sub
 
 End Class
