@@ -49,6 +49,7 @@ Partial Class EtchOSketchForm
         Me.EtchOSketchToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.XTrackBar = New System.Windows.Forms.TrackBar()
         Me.YTrackBar = New System.Windows.Forms.TrackBar()
+        Me.EtchSerialPort = New System.IO.Ports.SerialPort(Me.components)
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EtchyContextMenuStrip.SuspendLayout()
         Me.ControlsGroupBox.SuspendLayout()
@@ -314,4 +315,5 @@ Partial Class EtchOSketchForm
     Friend WithEvents EtchOSketchToolTip As ToolTip
     Friend WithEvents XTrackBar As TrackBar
     Friend WithEvents YTrackBar As TrackBar
+    Friend WithEvents EtchSerialPort As IO.Ports.SerialPort
 End Class

@@ -8,15 +8,24 @@ Option Explicit On
 Option Strict On
 
 
+Imports System.IO.Ports
 Imports System.Media
 Imports System.Runtime.CompilerServices
 Imports System.Threading
 
 Public Class EtchOSketchForm
 
+
+    Dim startCh As Byte
+    Dim msb As Byte
+    Dim lsb As Byte
+
     Private Sub LoadDefaults(sender As Object, e As EventArgs) Handles Me.Load
         'loads the default colors of the form on load
         DefaultColors()
+        EtchSerialPort.PortName = "COM6"
+        EtchSerialPort.BaudRate = 9600
+        EtchSerialPort.Open()
     End Sub
 
     Sub DefaultColors()
@@ -343,7 +352,13 @@ Public Class EtchOSketchForm
     End Sub
 
 
-
+    ''' <summary>
+    ''' Converts the upper 8 bits to an aspect of the screen
+    ''' This gives full screen range regardless of size of picture box
+    ''' </summary>
+    ''' <param name="axis"></param>
+    ''' <param name="currentHex%"></param>
+    ''' <returns></returns>
     Public Function CovertToCords(axis As Boolean, currentHex%) As Integer
         Dim xAspect As Double = DrawingPictureBox.Width / 1024
         Dim yAspect As Double = DrawingPictureBox.Height / 1024
@@ -365,4 +380,34 @@ Public Class EtchOSketchForm
         mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
     End Sub
 
+    Sub PollX()
+        Dim x(0) As Byte
+        x(0) = &H51
+        EtchSerialPort.Write(x, 0, 1)
+    End Sub
+
+    Sub PollY()
+        Dim y(0) As Byte
+        y(0) = &H51
+        EtchSerialPort.Write(y, 0, 1)
+    End Sub
+
+    Sub ConvertWrite()
+        Dim xDec%, yDec%
+        Dim shiftByte As Byte
+        xDec = CInt(msb)
+
+        shiftByte = lsb >> 6
+        yDec = shiftByte
+
+        mousedraw(xDec, yDec, False)
+
+    End Sub
+
+    Private Sub EtchSerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles EtchSerialPort.DataReceived
+        Dim data(EtchSerialPort.BytesToRead) As Byte
+        'startCh = data(0)
+        msb = data(0)
+        lsb = data(1)
+    End Sub
 End Class
