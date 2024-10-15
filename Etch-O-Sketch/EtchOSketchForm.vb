@@ -388,7 +388,7 @@ Public Class EtchOSketchForm
 
     Sub PollY()
         Dim y(0) As Byte
-        y(0) = &H51
+        y(0) = &H52
         EtchSerialPort.Write(y, 0, 1)
     End Sub
 
