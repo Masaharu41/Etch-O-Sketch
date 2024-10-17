@@ -37,7 +37,7 @@ Partial Class AboutForm
         Me.AboutLabel.ForeColor = System.Drawing.Color.White
         Me.AboutLabel.Location = New System.Drawing.Point(58, 47)
         Me.AboutLabel.Name = "AboutLabel"
-        Me.AboutLabel.Size = New System.Drawing.Size(669, 252)
+        Me.AboutLabel.Size = New System.Drawing.Size(669, 288)
         Me.AboutLabel.TabIndex = 0
         Me.AboutLabel.Text = resources.GetString("AboutLabel.Text")
         '
