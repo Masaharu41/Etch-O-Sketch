@@ -29,28 +29,40 @@ Public Class EtchOSketchForm
 
     Sub OpenPort(Optional force As Boolean = False)
         Dim portValid As Boolean = False
+        Dim portName As String
         ' auto test "all" COM port values until a valid connection or nothing reports back
         If force = True Then
-
-        End If
-
-        For i = 0 To 50
             Try
-                EtchSerialPort.PortName = $"COM{i}"
+                portName = ComComboBox.Text
+                EtchSerialPort.PortName = portName
                 EtchSerialPort.BaudRate = 9600
                 EtchSerialPort.Open()
                 portValid = True
-                Exit For
             Catch ex As Exception
-                ' MsgBox("Com was not Valid")
                 portValid = False
-
             End Try
-        Next
-        If portValid = True Then
-            Me.Text = "Port Is Open"
         Else
-            Me.Text = "Port Is Closed"
+            For i = 0 To 50
+                portName = $"COM{i}"
+                Try
+                    EtchSerialPort.PortName = portName
+                    EtchSerialPort.BaudRate = 9600
+                    EtchSerialPort.Open()
+                    portValid = True
+                    Exit For
+                Catch ex As Exception
+                    ' MsgBox("Com was not Valid")
+                    portValid = False
+
+                End Try
+            Next
+        End If
+
+        If portValid = True Then
+            PortLabel.Text = "Port Is Open"
+            ComComboBox.SelectedText = portName
+        Else
+            PortLabel.Text = "Port Is Closed"
         End If
     End Sub
 
@@ -443,5 +455,13 @@ Public Class EtchOSketchForm
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub ConnectButton_Click(sender As Object, e As EventArgs) Handles ConnectButton.Click
+        If AutoCheckBox.Checked Then
+            OpenPort()
+        Else
+            OpenPort(True)
+        End If
     End Sub
 End Class

@@ -51,12 +51,17 @@ Partial Class EtchOSketchForm
         Me.YTrackBar = New System.Windows.Forms.TrackBar()
         Me.EtchSerialPort = New System.IO.Ports.SerialPort(Me.components)
         Me.ComComboBox = New System.Windows.Forms.ComboBox()
+        Me.ConnectButton = New System.Windows.Forms.Button()
+        Me.PortLabel = New System.Windows.Forms.Label()
+        Me.AutoCheckBox = New System.Windows.Forms.CheckBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EtchyContextMenuStrip.SuspendLayout()
         Me.ControlsGroupBox.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.XTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'DrawingPictureBox
@@ -69,7 +74,7 @@ Partial Class EtchOSketchForm
         Me.DrawingPictureBox.Cursor = System.Windows.Forms.Cursors.Cross
         Me.DrawingPictureBox.Location = New System.Drawing.Point(64, 66)
         Me.DrawingPictureBox.Name = "DrawingPictureBox"
-        Me.DrawingPictureBox.Size = New System.Drawing.Size(768, 381)
+        Me.DrawingPictureBox.Size = New System.Drawing.Size(1328, 419)
         Me.DrawingPictureBox.TabIndex = 0
         Me.DrawingPictureBox.TabStop = False
         '
@@ -167,7 +172,7 @@ Partial Class EtchOSketchForm
         Me.ControlsGroupBox.Controls.Add(Me.DrawWaveformsButton)
         Me.ControlsGroupBox.Controls.Add(Me.ClearButton)
         Me.ControlsGroupBox.Controls.Add(Me.ExitButton)
-        Me.ControlsGroupBox.Location = New System.Drawing.Point(271, 482)
+        Me.ControlsGroupBox.Location = New System.Drawing.Point(831, 520)
         Me.ControlsGroupBox.Name = "ControlsGroupBox"
         Me.ControlsGroupBox.Size = New System.Drawing.Size(599, 135)
         Me.ControlsGroupBox.TabIndex = 1
@@ -181,7 +186,7 @@ Partial Class EtchOSketchForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem1, Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(900, 48)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1460, 40)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -189,7 +194,7 @@ Partial Class EtchOSketchForm
         '
         Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
-        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(71, 44)
+        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(71, 36)
         Me.FileToolStripMenuItem1.Text = "File"
         Me.FileToolStripMenuItem1.ToolTipText = "File functions"
         '
@@ -204,7 +209,7 @@ Partial Class EtchOSketchForm
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeColorToolStripMenuItem, Me.DrawWaveformsToolStripMenuItem1, Me.ClearToolStripMenuItem1})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(74, 44)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(74, 36)
         Me.EditToolStripMenuItem.Text = "Edit"
         Me.EditToolStripMenuItem.ToolTipText = "Edit the form"
         '
@@ -233,7 +238,7 @@ Partial Class EtchOSketchForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(84, 44)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(84, 36)
         Me.HelpToolStripMenuItem.Text = "Help"
         Me.HelpToolStripMenuItem.ToolTipText = "More information"
         '
@@ -248,7 +253,7 @@ Partial Class EtchOSketchForm
         '
         Me.XTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.XTrackBar.LargeChange = 1
-        Me.XTrackBar.Location = New System.Drawing.Point(24, 462)
+        Me.XTrackBar.Location = New System.Drawing.Point(24, 500)
         Me.XTrackBar.Maximum = 1021
         Me.XTrackBar.Name = "XTrackBar"
         Me.XTrackBar.Size = New System.Drawing.Size(230, 90)
@@ -258,7 +263,7 @@ Partial Class EtchOSketchForm
         '
         Me.YTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.YTrackBar.LargeChange = 1
-        Me.YTrackBar.Location = New System.Drawing.Point(24, 527)
+        Me.YTrackBar.Location = New System.Drawing.Point(24, 565)
         Me.YTrackBar.Maximum = 1021
         Me.YTrackBar.Name = "YTrackBar"
         Me.YTrackBar.Size = New System.Drawing.Size(230, 90)
@@ -272,10 +277,54 @@ Partial Class EtchOSketchForm
         Me.ComComboBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComComboBox.FormattingEnabled = True
         Me.ComComboBox.Items.AddRange(New Object() {"COM0", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9", "COM10"})
-        Me.ComComboBox.Location = New System.Drawing.Point(711, 7)
+        Me.ComComboBox.Location = New System.Drawing.Point(193, 28)
         Me.ComComboBox.Name = "ComComboBox"
         Me.ComComboBox.Size = New System.Drawing.Size(177, 33)
         Me.ComComboBox.TabIndex = 9
+        '
+        'ConnectButton
+        '
+        Me.ConnectButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ConnectButton.Location = New System.Drawing.Point(17, 65)
+        Me.ConnectButton.Name = "ConnectButton"
+        Me.ConnectButton.Size = New System.Drawing.Size(117, 52)
+        Me.ConnectButton.TabIndex = 10
+        Me.ConnectButton.Text = "Connect"
+        Me.ConnectButton.UseVisualStyleBackColor = True
+        '
+        'PortLabel
+        '
+        Me.PortLabel.AutoSize = True
+        Me.PortLabel.BackColor = System.Drawing.Color.White
+        Me.PortLabel.Location = New System.Drawing.Point(188, 77)
+        Me.PortLabel.Name = "PortLabel"
+        Me.PortLabel.Size = New System.Drawing.Size(112, 25)
+        Me.PortLabel.TabIndex = 11
+        Me.PortLabel.Text = "Serial Port"
+        '
+        'AutoCheckBox
+        '
+        Me.AutoCheckBox.AutoSize = True
+        Me.AutoCheckBox.Location = New System.Drawing.Point(17, 30)
+        Me.AutoCheckBox.Name = "AutoCheckBox"
+        Me.AutoCheckBox.Size = New System.Drawing.Size(88, 29)
+        Me.AutoCheckBox.TabIndex = 12
+        Me.AutoCheckBox.Text = "Auto"
+        Me.AutoCheckBox.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.BackColor = System.Drawing.Color.DarkGray
+        Me.GroupBox1.Controls.Add(Me.AutoCheckBox)
+        Me.GroupBox1.Controls.Add(Me.PortLabel)
+        Me.GroupBox1.Controls.Add(Me.ConnectButton)
+        Me.GroupBox1.Controls.Add(Me.ComComboBox)
+        Me.GroupBox1.Location = New System.Drawing.Point(413, 520)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(386, 135)
+        Me.GroupBox1.TabIndex = 13
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "GroupBox1"
         '
         'EtchOSketchForm
         '
@@ -283,9 +332,9 @@ Partial Class EtchOSketchForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Firebrick
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(900, 629)
+        Me.ClientSize = New System.Drawing.Size(1460, 667)
         Me.ContextMenuStrip = Me.EtchyContextMenuStrip
-        Me.Controls.Add(Me.ComComboBox)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.YTrackBar)
         Me.Controls.Add(Me.XTrackBar)
         Me.Controls.Add(Me.MenuStrip1)
@@ -301,6 +350,8 @@ Partial Class EtchOSketchForm
         Me.MenuStrip1.PerformLayout()
         CType(Me.XTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -334,4 +385,8 @@ Partial Class EtchOSketchForm
     Friend WithEvents YTrackBar As TrackBar
     Friend WithEvents EtchSerialPort As IO.Ports.SerialPort
     Friend WithEvents ComComboBox As ComboBox
+    Friend WithEvents ConnectButton As Button
+    Friend WithEvents PortLabel As Label
+    Friend WithEvents AutoCheckBox As CheckBox
+    Friend WithEvents GroupBox1 As GroupBox
 End Class
