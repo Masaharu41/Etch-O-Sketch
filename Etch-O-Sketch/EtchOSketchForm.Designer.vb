@@ -54,14 +54,14 @@ Partial Class EtchOSketchForm
         Me.ConnectButton = New System.Windows.Forms.Button()
         Me.PortLabel = New System.Windows.Forms.Label()
         Me.AutoCheckBox = New System.Windows.Forms.CheckBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComGroupBox = New System.Windows.Forms.GroupBox()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EtchyContextMenuStrip.SuspendLayout()
         Me.ControlsGroupBox.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.XTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.ComGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'DrawingPictureBox
@@ -72,9 +72,9 @@ Partial Class EtchOSketchForm
         Me.DrawingPictureBox.BackColor = System.Drawing.Color.LemonChiffon
         Me.DrawingPictureBox.ContextMenuStrip = Me.EtchyContextMenuStrip
         Me.DrawingPictureBox.Cursor = System.Windows.Forms.Cursors.Cross
-        Me.DrawingPictureBox.Location = New System.Drawing.Point(64, 66)
+        Me.DrawingPictureBox.Location = New System.Drawing.Point(32, 60)
         Me.DrawingPictureBox.Name = "DrawingPictureBox"
-        Me.DrawingPictureBox.Size = New System.Drawing.Size(1328, 419)
+        Me.DrawingPictureBox.Size = New System.Drawing.Size(1246, 434)
         Me.DrawingPictureBox.TabIndex = 0
         Me.DrawingPictureBox.TabStop = False
         '
@@ -125,21 +125,23 @@ Partial Class EtchOSketchForm
         '
         'SelectColorButton
         '
+        Me.SelectColorButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.SelectColorButton.Location = New System.Drawing.Point(408, 30)
         Me.SelectColorButton.Name = "SelectColorButton"
         Me.SelectColorButton.Size = New System.Drawing.Size(167, 75)
         Me.SelectColorButton.TabIndex = 4
-        Me.SelectColorButton.Text = "Select Color"
+        Me.SelectColorButton.Text = "&Select Color"
         Me.EtchOSketchToolTip.SetToolTip(Me.SelectColorButton, "Opens Color Selection Dialog")
         Me.SelectColorButton.UseVisualStyleBackColor = True
         '
         'ClearButton
         '
+        Me.ClearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ClearButton.Location = New System.Drawing.Point(15, 30)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(104, 75)
         Me.ClearButton.TabIndex = 1
-        Me.ClearButton.Text = "Clear"
+        Me.ClearButton.Text = "&Clear"
         Me.EtchOSketchToolTip.SetToolTip(Me.ClearButton, "Clears the contents of the drawing pad")
         Me.ClearButton.UseVisualStyleBackColor = True
         '
@@ -149,7 +151,7 @@ Partial Class EtchOSketchForm
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(104, 75)
         Me.ExitButton.TabIndex = 2
-        Me.ExitButton.Text = "Exit"
+        Me.ExitButton.Text = "&Exit"
         Me.EtchOSketchToolTip.SetToolTip(Me.ExitButton, "Exits the form")
         Me.ExitButton.UseVisualStyleBackColor = True
         '
@@ -159,7 +161,7 @@ Partial Class EtchOSketchForm
         Me.DrawWaveformsButton.Name = "DrawWaveformsButton"
         Me.DrawWaveformsButton.Size = New System.Drawing.Size(167, 75)
         Me.DrawWaveformsButton.TabIndex = 3
-        Me.DrawWaveformsButton.Text = "Draw Waveforms"
+        Me.DrawWaveformsButton.Text = "&Draw Waveforms"
         Me.EtchOSketchToolTip.SetToolTip(Me.DrawWaveformsButton, "Draws a one cycle Sine, Cos, and Tan waveform ")
         Me.DrawWaveformsButton.UseVisualStyleBackColor = True
         '
@@ -172,9 +174,9 @@ Partial Class EtchOSketchForm
         Me.ControlsGroupBox.Controls.Add(Me.DrawWaveformsButton)
         Me.ControlsGroupBox.Controls.Add(Me.ClearButton)
         Me.ControlsGroupBox.Controls.Add(Me.ExitButton)
-        Me.ControlsGroupBox.Location = New System.Drawing.Point(831, 520)
+        Me.ControlsGroupBox.Location = New System.Drawing.Point(685, 520)
         Me.ControlsGroupBox.Name = "ControlsGroupBox"
-        Me.ControlsGroupBox.Size = New System.Drawing.Size(599, 135)
+        Me.ControlsGroupBox.Size = New System.Drawing.Size(593, 135)
         Me.ControlsGroupBox.TabIndex = 1
         Me.ControlsGroupBox.TabStop = False
         Me.ControlsGroupBox.Text = "Controls"
@@ -186,7 +188,7 @@ Partial Class EtchOSketchForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem1, Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1460, 40)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1442, 40)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -194,7 +196,7 @@ Partial Class EtchOSketchForm
         '
         Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
-        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(71, 36)
+        Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(71, 44)
         Me.FileToolStripMenuItem1.Text = "File"
         Me.FileToolStripMenuItem1.ToolTipText = "File functions"
         '
@@ -209,7 +211,7 @@ Partial Class EtchOSketchForm
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeColorToolStripMenuItem, Me.DrawWaveformsToolStripMenuItem1, Me.ClearToolStripMenuItem1})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(74, 36)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(74, 44)
         Me.EditToolStripMenuItem.Text = "Edit"
         Me.EditToolStripMenuItem.ToolTipText = "Edit the form"
         '
@@ -238,7 +240,7 @@ Partial Class EtchOSketchForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(84, 36)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(84, 44)
         Me.HelpToolStripMenuItem.Text = "Help"
         Me.HelpToolStripMenuItem.ToolTipText = "More information"
         '
@@ -285,11 +287,12 @@ Partial Class EtchOSketchForm
         'ConnectButton
         '
         Me.ConnectButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ConnectButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ConnectButton.Location = New System.Drawing.Point(17, 65)
         Me.ConnectButton.Name = "ConnectButton"
         Me.ConnectButton.Size = New System.Drawing.Size(117, 52)
         Me.ConnectButton.TabIndex = 10
-        Me.ConnectButton.Text = "Connect"
+        Me.ConnectButton.Text = "C&onnect"
         Me.ConnectButton.UseVisualStyleBackColor = True
         '
         'PortLabel
@@ -312,19 +315,20 @@ Partial Class EtchOSketchForm
         Me.AutoCheckBox.Text = "Auto"
         Me.AutoCheckBox.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'ComGroupBox
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.DarkGray
-        Me.GroupBox1.Controls.Add(Me.AutoCheckBox)
-        Me.GroupBox1.Controls.Add(Me.PortLabel)
-        Me.GroupBox1.Controls.Add(Me.ConnectButton)
-        Me.GroupBox1.Controls.Add(Me.ComComboBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(413, 520)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(386, 135)
-        Me.GroupBox1.TabIndex = 13
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
+        Me.ComGroupBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComGroupBox.BackColor = System.Drawing.Color.DarkGray
+        Me.ComGroupBox.Controls.Add(Me.AutoCheckBox)
+        Me.ComGroupBox.Controls.Add(Me.PortLabel)
+        Me.ComGroupBox.Controls.Add(Me.ConnectButton)
+        Me.ComGroupBox.Controls.Add(Me.ComComboBox)
+        Me.ComGroupBox.Location = New System.Drawing.Point(272, 520)
+        Me.ComGroupBox.Name = "ComGroupBox"
+        Me.ComGroupBox.Size = New System.Drawing.Size(386, 135)
+        Me.ComGroupBox.TabIndex = 13
+        Me.ComGroupBox.TabStop = False
+        Me.ComGroupBox.Text = "Serial Port"
         '
         'EtchOSketchForm
         '
@@ -332,9 +336,9 @@ Partial Class EtchOSketchForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Firebrick
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1460, 667)
+        Me.ClientSize = New System.Drawing.Size(1442, 667)
         Me.ContextMenuStrip = Me.EtchyContextMenuStrip
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.ComGroupBox)
         Me.Controls.Add(Me.YTrackBar)
         Me.Controls.Add(Me.XTrackBar)
         Me.Controls.Add(Me.MenuStrip1)
@@ -350,8 +354,8 @@ Partial Class EtchOSketchForm
         Me.MenuStrip1.PerformLayout()
         CType(Me.XTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.ComGroupBox.ResumeLayout(False)
+        Me.ComGroupBox.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -388,5 +392,5 @@ Partial Class EtchOSketchForm
     Friend WithEvents ConnectButton As Button
     Friend WithEvents PortLabel As Label
     Friend WithEvents AutoCheckBox As CheckBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents ComGroupBox As GroupBox
 End Class
