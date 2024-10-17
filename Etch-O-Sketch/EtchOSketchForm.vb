@@ -16,6 +16,7 @@ Imports System.Threading
 Public Class EtchOSketchForm
 
     Dim sp As String
+    Dim port As Boolean = False
     Dim startCh As Byte
     Dim msb As Byte
     Dim lsb As Byte
@@ -61,8 +62,10 @@ Public Class EtchOSketchForm
         If portValid = True Then
             PortLabel.Text = "Port Is Open"
             ComComboBox.SelectedText = portName
+            port = True
         Else
             PortLabel.Text = "Port Is Closed"
+            port = False
         End If
     End Sub
 
@@ -432,6 +435,18 @@ Public Class EtchOSketchForm
         EtchSerialPort.Write(y, 0, 1)
     End Sub
 
+    Sub PollCycle()
+        Static alt As Boolean
+
+        If alt Then
+            PollX()
+            alt = False
+        Else
+            PollY()
+            alt = True
+        End If
+    End Sub
+
     Sub ConvertWrite()
         Dim xDec%, yDec%
         Dim shiftByte As Byte
@@ -463,5 +478,20 @@ Public Class EtchOSketchForm
         Else
             OpenPort(True)
         End If
+    End Sub
+
+
+
+    Private Sub ExternalCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ExternalCheckBox.CheckedChanged
+        If ExternalCheckBox.Checked And port Then
+            Timer.Enabled = True
+
+        Else
+            Timer.Enabled = False
+        End If
+    End Sub
+
+    Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+        PollCycle()
     End Sub
 End Class

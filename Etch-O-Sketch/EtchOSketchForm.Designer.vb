@@ -55,6 +55,8 @@ Partial Class EtchOSketchForm
         Me.PortLabel = New System.Windows.Forms.Label()
         Me.AutoCheckBox = New System.Windows.Forms.CheckBox()
         Me.ComGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.ExternalCheckBox = New System.Windows.Forms.CheckBox()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EtchyContextMenuStrip.SuspendLayout()
         Me.ControlsGroupBox.SuspendLayout()
@@ -188,7 +190,7 @@ Partial Class EtchOSketchForm
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem1, Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1442, 40)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1442, 48)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -334,6 +336,17 @@ Partial Class EtchOSketchForm
         Me.ComGroupBox.TabStop = False
         Me.ComGroupBox.Text = "Serial Port"
         '
+        'ExternalCheckBox
+        '
+        Me.ExternalCheckBox.AutoSize = True
+        Me.ExternalCheckBox.BackColor = System.Drawing.Color.White
+        Me.ExternalCheckBox.Location = New System.Drawing.Point(43, 626)
+        Me.ExternalCheckBox.Name = "ExternalCheckBox"
+        Me.ExternalCheckBox.Size = New System.Drawing.Size(123, 29)
+        Me.ExternalCheckBox.TabIndex = 14
+        Me.ExternalCheckBox.Text = "External"
+        Me.ExternalCheckBox.UseVisualStyleBackColor = False
+        '
         'EtchOSketchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -342,6 +355,7 @@ Partial Class EtchOSketchForm
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1442, 667)
         Me.ContextMenuStrip = Me.EtchyContextMenuStrip
+        Me.Controls.Add(Me.ExternalCheckBox)
         Me.Controls.Add(Me.ComGroupBox)
         Me.Controls.Add(Me.YTrackBar)
         Me.Controls.Add(Me.XTrackBar)
@@ -397,4 +411,6 @@ Partial Class EtchOSketchForm
     Friend WithEvents PortLabel As Label
     Friend WithEvents AutoCheckBox As CheckBox
     Friend WithEvents ComGroupBox As GroupBox
+    Friend WithEvents Timer As Timer
+    Friend WithEvents ExternalCheckBox As CheckBox
 End Class
