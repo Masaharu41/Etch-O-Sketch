@@ -283,6 +283,7 @@ Partial Class EtchOSketchForm
         Me.ComComboBox.Name = "ComComboBox"
         Me.ComComboBox.Size = New System.Drawing.Size(177, 33)
         Me.ComComboBox.TabIndex = 9
+        Me.EtchOSketchToolTip.SetToolTip(Me.ComComboBox, "Displays Com Port if active" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or allows manual selection " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for which port to use")
         '
         'ConnectButton
         '
@@ -293,6 +294,7 @@ Partial Class EtchOSketchForm
         Me.ConnectButton.Size = New System.Drawing.Size(117, 52)
         Me.ConnectButton.TabIndex = 10
         Me.ConnectButton.Text = "C&onnect"
+        Me.EtchOSketchToolTip.SetToolTip(Me.ConnectButton, "Connect to Serial Device")
         Me.ConnectButton.UseVisualStyleBackColor = True
         '
         'PortLabel
@@ -304,6 +306,7 @@ Partial Class EtchOSketchForm
         Me.PortLabel.Size = New System.Drawing.Size(112, 25)
         Me.PortLabel.TabIndex = 11
         Me.PortLabel.Text = "Serial Port"
+        Me.EtchOSketchToolTip.SetToolTip(Me.PortLabel, "Serial Port State")
         '
         'AutoCheckBox
         '
@@ -313,6 +316,7 @@ Partial Class EtchOSketchForm
         Me.AutoCheckBox.Size = New System.Drawing.Size(88, 29)
         Me.AutoCheckBox.TabIndex = 12
         Me.AutoCheckBox.Text = "Auto"
+        Me.EtchOSketchToolTip.SetToolTip(Me.AutoCheckBox, "Attempt to Auto Connect to Serial Port")
         Me.AutoCheckBox.UseVisualStyleBackColor = True
         '
         'ComGroupBox
