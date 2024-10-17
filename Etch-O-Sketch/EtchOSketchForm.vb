@@ -15,18 +15,46 @@ Imports System.Threading
 
 Public Class EtchOSketchForm
 
-
+    Dim sp As String
     Dim startCh As Byte
     Dim msb As Byte
     Dim lsb As Byte
 
     Private Sub LoadDefaults(sender As Object, e As EventArgs) Handles Me.Load
         'loads the default colors of the form on load
+
         DefaultColors()
-        EtchSerialPort.PortName = "COM6"
-        EtchSerialPort.BaudRate = 9600
-        EtchSerialPort.Open()
+        OpenPort()
     End Sub
+
+    Sub OpenPort(Optional force As Boolean = False)
+        Dim portValid As Boolean = False
+        ' auto test "all" COM port values until a valid connection or nothing reports back
+        If force = True Then
+
+        End If
+
+        For i = 0 To 50
+            Try
+                EtchSerialPort.PortName = $"COM{i}"
+                EtchSerialPort.BaudRate = 9600
+                EtchSerialPort.Open()
+                portValid = True
+                Exit For
+            Catch ex As Exception
+                ' MsgBox("Com was not Valid")
+                portValid = False
+
+            End Try
+        Next
+        If portValid = True Then
+            Me.Text = "Port Is Open"
+        Else
+            Me.Text = "Port Is Closed"
+        End If
+    End Sub
+
+
 
     Sub DefaultColors()
         'Loads the default color scheme of the form
@@ -407,7 +435,13 @@ Public Class EtchOSketchForm
     Private Sub EtchSerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles EtchSerialPort.DataReceived
         Dim data(EtchSerialPort.BytesToRead) As Byte
         'startCh = data(0)
-        msb = data(0)
-        lsb = data(1)
+        Try
+            msb = data(0)
+            lsb = data(1)
+            ConvertWrite()
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
