@@ -406,14 +406,14 @@ Public Class EtchOSketchForm
     ''' <param name="currentHex%"></param>
     ''' <returns></returns>
     Public Function CovertToCords(axis As Boolean, currentHex%) As Integer
-        Dim xAspect As Double = DrawingPictureBox.Width / 1024
-        Dim yAspect As Double = DrawingPictureBox.Height / 1024
+        Dim xAspect As Double = DrawingPictureBox.Width / 1000
+        Dim yAspect As Double = DrawingPictureBox.Height / 1000
         Dim cordReturn%
 
         If axis = True Then
-            cordReturn = CInt(xAspect * currentHex)
+            cordReturn = CInt(xAspect * currentHex) - 10
         Else
-            cordReturn = CInt(yAspect * currentHex)
+            cordReturn = CInt(yAspect * currentHex) - 10
         End If
         Return cordReturn
     End Function
