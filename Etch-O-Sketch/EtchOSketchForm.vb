@@ -18,8 +18,10 @@ Public Class EtchOSketchForm
     Dim sp As String
     Dim port As Boolean = False
     Dim startCh As Byte
-    Dim msb As Byte
-    Dim lsb As Byte
+    Dim msbX As Byte
+    Dim lsbX As Byte
+    Dim msbY As Byte
+    Dim lsbY As Byte
 
     Private Sub LoadDefaults(sender As Object, e As EventArgs) Handles Me.Load
         'loads the default colors of the form on load
@@ -44,6 +46,7 @@ Public Class EtchOSketchForm
             End Try
         Else
             For i = 0 To 50
+
                 portName = $"COM{i}"
                 Try
                     EtchSerialPort.PortName = portName
@@ -424,9 +427,9 @@ Public Class EtchOSketchForm
     End Sub
 
     Sub PollX()
-        Dim x(0) As Byte
+        Dim x(1) As Byte
         x(0) = &H51
-        EtchSerialPort.Write(x, 0, 1)
+        EtchSerialPort.Write(x, 0, 2)
     End Sub
 
     Sub PollY()
@@ -435,6 +438,11 @@ Public Class EtchOSketchForm
         EtchSerialPort.Write(y, 0, 1)
     End Sub
 
+    Sub GetSettings()
+        Dim t(0) As Byte
+        t(0) = &HF0
+        EtchSerialPort.Write(t, 0, 1)
+    End Sub
     Sub PollCycle()
         Static alt As Boolean
 
@@ -447,25 +455,41 @@ Public Class EtchOSketchForm
         End If
     End Sub
 
-    Sub ConvertWrite()
+    Sub ConvertWriteX()
         Dim xDec%, yDec%
         Dim shiftByte As Byte
-        xDec = CInt(msb)
+        shiftByte = lsbX >> 6
+        xDec = CInt(msbX) * 4 + CInt(shiftByte)
+        shiftByte = lsbY >> 6
+        yDec = CInt(msbY) * 4 + CInt(shiftByte)
+        Console.WriteLine(xDec)
+        Console.WriteLine(yDec)
 
-        shiftByte = lsb >> 6
-        yDec = shiftByte
-
-        mousedraw(xDec, yDec, False)
+        mousedraw(CovertToCords(True, xDec), CovertToCords(False, yDec), False)
 
     End Sub
 
     Private Sub EtchSerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles EtchSerialPort.DataReceived
+        Thread.Sleep(5)
+        Static both As Boolean
         Dim data(EtchSerialPort.BytesToRead) As Byte
+        EtchSerialPort.Read(data, 0, EtchSerialPort.BytesToRead)
         'startCh = data(0)
         Try
-            msb = data(0)
-            lsb = data(1)
-            ConvertWrite()
+            If both Then
+
+                msbX = data(0)
+                lsbX = data(1)
+                both = False
+            Else
+                msbY = data(0)
+                lsbY = data(1)
+                both = True
+                ConvertWriteX()
+
+            End If
+            ' Console.WriteLine(data(0))
+            'Console.WriteLine(data(1))
 
         Catch ex As Exception
 
@@ -485,7 +509,7 @@ Public Class EtchOSketchForm
     Private Sub ExternalCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ExternalCheckBox.CheckedChanged
         If ExternalCheckBox.Checked And port Then
             Timer.Enabled = True
-
+            'GetSettings()
         Else
             Timer.Enabled = False
         End If
