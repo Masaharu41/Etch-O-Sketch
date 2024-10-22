@@ -427,25 +427,22 @@ Public Class EtchOSketchForm
     End Sub
 
     Sub PollX()
+        ' Sends byte to get the adc result for ADC1
         Dim x(1) As Byte
         x(0) = &H51
         EtchSerialPort.Write(x, 0, 2)
     End Sub
 
     Sub PollY()
+        ' Sends byte to get the adc result for ADC2
         Dim y(0) As Byte
         y(0) = &H52
         EtchSerialPort.Write(y, 0, 1)
     End Sub
 
-    Sub GetSettings()
-        Dim t(0) As Byte
-        t(0) = &HF0
-        EtchSerialPort.Write(t, 0, 1)
-    End Sub
     Sub PollCycle()
         Static alt As Boolean
-
+        ' Alternate polling the two ADCs
         If alt Then
             PollX()
             alt = False
@@ -456,6 +453,7 @@ Public Class EtchOSketchForm
     End Sub
 
     Sub ConvertWriteX()
+        ' Convert the incoming data into integers that represent the decimal value of the hex
         Dim xDec%, yDec%
         Dim shiftByte As Byte
         shiftByte = lsbX >> 6
@@ -482,14 +480,14 @@ Public Class EtchOSketchForm
                 lsbX = data(1)
                 both = False
             Else
+                ' waits to write data until both x and y have been polled
                 msbY = data(0)
                 lsbY = data(1)
                 both = True
                 ConvertWriteX()
 
             End If
-            ' Console.WriteLine(data(0))
-            'Console.WriteLine(data(1))
+
 
         Catch ex As Exception
 
@@ -498,6 +496,7 @@ Public Class EtchOSketchForm
 
     Private Sub ConnectButton_Click(sender As Object, e As EventArgs) Handles ConnectButton.Click
         If AutoCheckBox.Checked Then
+            ' enables auto connect for the serial port
             OpenPort()
         Else
             OpenPort(True)
@@ -507,15 +506,17 @@ Public Class EtchOSketchForm
 
 
     Private Sub ExternalCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ExternalCheckBox.CheckedChanged
+        ' Selects whether the the sliders are used or the external serial device.
+        ' port must be open to enable
         If ExternalCheckBox.Checked And port Then
             Timer.Enabled = True
-            'GetSettings()
         Else
             Timer.Enabled = False
         End If
     End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
+        ' activates polling when timer is done
         PollCycle()
     End Sub
 End Class
