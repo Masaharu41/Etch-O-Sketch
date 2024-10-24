@@ -144,16 +144,19 @@ Public Class EtchOSketchForm
         'Gives a display of the cursors position on the drawing pad to the user when the mouse is moved.
         Me.Text = $"({e.X},{e.Y} Button: {e.Button})"
         'mousedraw(e.X, e.Y)
-        If e.Button = MouseButtons.Left Then
+        If e.Button = MouseButtons.Left And ExternalCheckBox.Checked = False Then
             mousedraw(e.X, e.Y, False)
+        Else
         End If
     End Sub
 
     Private Sub DrawingPictureBox_MouseDown(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseDown
         'Gives a display of the cursors location when any of the mouse's buttons are pressed.
         Me.Text = $"({e.X},{e.Y} Button: {e.Button})"
-        If e.Button = MouseButtons.Left Then
+        If e.Button = MouseButtons.Left And ExternalCheckBox.Checked = False Then
             mousedraw(e.X, e.Y, True)
+        Else
+
         End If
     End Sub
 
@@ -419,11 +422,18 @@ Public Class EtchOSketchForm
     End Function
 
     Private Sub XTrackBar_DragLeave(sender As Object, e As EventArgs) Handles XTrackBar.ValueChanged
-        mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
+        If ExternalCheckBox.Checked Then
+            mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
+        Else
+        End If
     End Sub
 
     Private Sub YTrackBar_DragLeave(sender As Object, e As EventArgs) Handles YTrackBar.ValueChanged
-        mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
+        If ExternalCheckBox.Checked Then
+            mousedraw(CovertToCords(True, XTrackBar.Value), CovertToCords(False, YTrackBar.Value), False)
+        Else
+
+        End If
     End Sub
 
     Sub PollX()
@@ -470,10 +480,10 @@ Public Class EtchOSketchForm
     Private Sub EtchSerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles EtchSerialPort.DataReceived
         Thread.Sleep(5)
         Static both As Boolean
-        Dim data(EtchSerialPort.BytesToRead) As Byte
-        EtchSerialPort.Read(data, 0, EtchSerialPort.BytesToRead)
         'startCh = data(0)
         Try
+            Dim data(EtchSerialPort.BytesToRead) As Byte
+            EtchSerialPort.Read(data, 0, EtchSerialPort.BytesToRead)
             If both Then
 
                 msbX = data(0)
