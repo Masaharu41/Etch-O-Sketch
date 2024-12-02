@@ -37,34 +37,36 @@ Public Class EtchOSketchForm
         If force = True Then
             Try
                 portName = ComComboBox.Text
-                EtchSerialPort.PortName = portName
                 EtchSerialPort.BaudRate = 9600
+                EtchSerialPort.PortName = portName
                 EtchSerialPort.Open()
                 portValid = True
             Catch ex As Exception
                 portValid = False
+                portName = ComComboBox.Text
+                EtchSerialPort.Close()
             End Try
         Else
             For i = 0 To 50
 
                 portName = $"COM{i}"
                 Try
-                    EtchSerialPort.PortName = portName
                     EtchSerialPort.BaudRate = 9600
+                    EtchSerialPort.PortName = portName
                     EtchSerialPort.Open()
                     portValid = True
                     Exit For
                 Catch ex As Exception
                     ' MsgBox("Com was not Valid")
                     portValid = False
-
+                    EtchSerialPort.Close()
                 End Try
             Next
         End If
 
         If portValid = True Then
             PortLabel.Text = "Port Is Open"
-            ComComboBox.SelectedText = portName
+            ComComboBox.Text = portName
             port = True
         Else
             PortLabel.Text = "Port Is Closed"
@@ -527,6 +529,10 @@ Public Class EtchOSketchForm
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         ' activates polling when timer is done
-        PollCycle()
+        If port = True Then
+            PollCycle()
+        Else
+            Timer.Enabled = False
+        End If
     End Sub
 End Class
